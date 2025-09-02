@@ -1,34 +1,86 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const respostas = {
-        resposta1: "O tema principal do filme \"A Rede Social\" é a origem e o crescimento meteórico do Facebook, explorando as complexidades, as rivalidades e as batalhas legais que cercaram sua criação. Além disso, aborda temas como amizade, traição, ambição, inovação tecnológica e o impacto da era digital nas relações humanas.",
-        resposta2: "O sucesso do Facebook teve um impacto transformador na vida de Mark Zuckerberg. De um estudante universitário com uma ideia, ele se tornou um dos homens mais jovens e ricos do mundo. No entanto, o filme também sugere que esse sucesso veio acompanhado de isolamento social, perda de amizades significativas e um intenso escrutínio público e legal, mostrando o lado muitas vezes solitário e desafiador da fama e da riqueza extrema.",
-        resposta3: "\"A Rede Social\" ilustra de forma contundente a relação entre tecnologia e sociedade. \n\n**Pontos Positivos:**\n*   **Conectividade:** A tecnologia do Facebook permitiu a milhões de pessoas se conectarem e compartilharem informações como nunca antes.\n*   **Inovação:** O filme mostra o espírito empreendedor e a capacidade de transformar uma ideia em algo revolucionário.\n*   **Plataforma de Expressão:** O Facebook se tornou um espaço para pessoas expressarem suas identidades e se organizarem socialmente.\n\n**Pontos Negativos:**\n*   **Desumanização das Relações:** A obsessão pela conectividade online pode levar ao distanciamento em relações reais, como exemplificado pela própria vida de Zuckerberg.\n*   **Questões de Privacidade:** O filme implicitamente levanta questões sobre o uso de dados pessoais e a linha tênue entre inovação e invasão de privacidade.\n*   **Traição e Ambição Desmedida:** A busca pelo sucesso tecnológico, no filme, é retratada como algo que corrói amizades e valores éticos.\n\nO filme sugere que, embora a tecnologia possa unir o mundo, ela também pode expor e amplificar as fraquezas e dilemas da condição humana, como a inveja, a ganância e a necessidade de validação.",
-        resposta4: "A mensagem que \"A Rede Social\" transmite sobre a importância da ética e da responsabilidade no mundo dos negócios e da tecnologia é bastante crítica e complexa. O filme sugere que, na busca por inovação e sucesso, a ética e a responsabilidade podem ser facilmente negligenciadas.\n\nEle mostra como a ambição desenfreada e a sede por reconhecimento podem levar a decisões moralmente questionáveis, como a traição de amigos e parceiros de negócios, e a apropriação de ideias. A mensagem implícita é que, mesmo que a tecnologia possa parecer neutra, suas aplicações e o modo como é desenvolvida e gerenciada têm profundas implicações sociais e morais.\n\n**Minha Opinião:** Concordo plenamente com a relevância dessa mensagem. Em um mundo cada vez mais impulsionado pela tecnologia, a reflexão sobre ética e responsabilidade é mais crucial do que nunca. O filme serve como um lembrete poderoso de que o sucesso financeiro e a inovação não devem vir à custa da integridade moral, da justiça e do respeito pelas pessoas. A história de Zuckerberg, como retratada, é um estudo de caso sobre como a falta de ética no início de um projeto pode gerar consequências complexas e duradouras, tanto para os envolvidos quanto para a sociedade em geral. É fundamental que líderes e desenvolvedores de tecnologia considerem o impacto humano e social de suas criações desde o primeiro momento."
-    };
+document.getElementById('year').textContent = new Date().getFullYear();
 
-    function exibirRespostas() {
-        document.getElementById('resposta1').textContent = respostas.resposta1;
-        document.getElementById('resposta2').textContent = respostas.resposta2;
-        document.getElementById('resposta3').innerHTML = respostas.resposta3.replace(/\n/g, '<br>');
-        document.getElementById('resposta4').innerHTML = respostas.resposta4.replace(/\n/g, '<br>');
+const synopsisText = `Mark Zuckerberg, um estudante de Harvard em 2003, cria um site chamado "Facemash", que rapidamente se torna viral na universidade. Inspirado por isso, ele começa a desenvolver uma rede social para conectar estudantes: o "The Facebook". Com a ajuda do amigo Eduardo Saverin, o projeto cresce exponencialmente. No entanto, à medida que o Facebook se expande para outras universidades e depois para o mundo, Mark enfrenta acusações de traição de amigos, roubo de ideias por parte dos gêmeos Cameron e Tyler Winklevoss, e a perda de sua própria humanidade no caminho do sucesso. O filme é narrado através de depoimentos em tribunal, mostrando a ascensão meteórica do Facebook e o preço pessoal pago por seu criador.`;
+
+function typeWriter(element, text, speed = 30) {
+  let i = 0;
+  element.innerHTML = '';
+  const timer = setInterval(() => {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+      i++;
+    } else {
+      clearInterval(timer);
     }
+  }, speed);
+}
 
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+window.onload = function () {
+  const synopsisEl = document.getElementById('synopsis-text');
+  typeWriter(synopsisEl, synopsisText);
+  createAccordion();
+
+  const scrollToTopBtn = document.getElementById('scrollToTop');
+  window.onscroll = () => {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.style.display = 'block';
+    } else {
+      scrollToTopBtn.style.display = 'none';
+    }
+  };
+
+  scrollToTopBtn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+};
+
+const questions = [
+  {
+    q: "1. Qual é o tema principal do filme \"A Rede Social\"?",
+    a: "O tema principal do filme é a ascensão do Facebook e a complexa jornada de Mark Zuckerberg na criação da rede social. O filme explora temas como amizade, traição, ambição, genialidade e os custos pessoais do sucesso. Também aborda questões de propriedade intelectual, rivalidades universitárias e a transformação da forma como as pessoas se conectam."
+  },
+  {
+    q: "2. Qual é o impacto do sucesso do Facebook na vida de Mark Zuckerberg?",
+    a: "O sucesso do Facebook transforma a vida de Mark Zuckerberg em uma trajetória de riqueza e poder, mas também traz isolamento emocional e perda de relacionamentos pessoais. Ele se distancia de seus amigos mais próximos, como Eduardo Saverin, e enfrenta processos judiciais por traição e roubo de ideias. O filme mostra que, apesar de sua conquista monumental, Zuckerberg se torna uma figura solitária, simbolizada pela cena final em que ele envia uma solicitação de amizade à ex-namorada, buscando conexão em uma plataforma que ele criou, mas que não consegue preencher sua solidão."
+  },
+  {
+    q: "3. Descreva como o filme \"A Rede Social\" mostra a relação entre a tecnologia e a sociedade. Quais são os principais pontos positivos e negativos dessa relação?",
+    a: "O filme mostra que a tecnologia pode revolucionar a forma como as pessoas se comunicam e se conectam, democratizando o acesso à informação e criando novas formas de interação social. Esse é o lado positivo: o Facebook une pessoas, facilita relacionamentos e transforma a cultura digital. No entanto, o lado negativo é destacado através da desumanização das relações, onde conexões virtuais substituem laços reais, e a ambição tecnológica leva à traição, litígios e alienação. O filme sugere que, embora a tecnologia una o mundo, ela também pode isolar o indivíduo em sua própria criação."
+  },
+  {
+    q: "4. Qual é a mensagem que o filme \"A Rede Social\" transmite sobre a importância da ética e da responsabilidade no mundo dos negócios e da tecnologia? O que você acha dessa mensagem?",
+    a: "A mensagem central é que o sucesso tecnológico e empresarial não deve vir à custa da ética, da lealdade e da responsabilidade. O filme critica a maneira como ideias são apropriadas, parcerias são traídas e pessoas são descartadas no caminho para o poder. Mark Zuckerberg é retratado como um gênio, mas também como alguém que falha em manter vínculos humanos e agir com integridade. Acho essa mensagem muito relevante: inovação é importante, mas deve andar lado a lado com valores morais. O filme serve como um alerta sobre os perigos de priorizar o sucesso acima de tudo."
+  }
+];
+
+function createAccordion() {
+  const accordionContainer = document.getElementById('accordion');
+  questions.forEach(item => {
+    const itemEl = document.createElement('div');
+    itemEl.classList.add('accordion-item');
+
+    const questionBtn = document.createElement('button');
+    questionBtn.classList.add('accordion-question');
+    questionBtn.textContent = item.q;
+
+    const answerEl = document.createElement('div');
+    answerEl.classList.add('accordion-answer');
+    answerEl.textContent = item.a;
+
+    itemEl.appendChild(questionBtn);
+    itemEl.appendChild(answerEl);
+    accordionContainer.appendChild(itemEl);
+
+    questionBtn.addEventListener('click', () => {
+      const isActive = questionBtn.classList.toggle('active');
+      answerEl.classList.toggle('open');
+
+      document.querySelectorAll('.accordion-item').forEach(el => {
+        if (el !== itemEl) {
+          el.querySelector('.accordion-question').classList.remove('active');
+          el.querySelector('.accordion-answer').classList.remove('open');
+        }
+      });
     });
-
-    const iniciarExploracaoBtn = document.getElementById('iniciarExploracao');
-    if (iniciarExploracaoBtn) {
-        iniciarExploracaoBtn.addEventListener('click', () => {
-            document.getElementById('perguntas').scrollIntoView({
-                behavior: 'smooth'
-            });
-            exibirRespostas();
-        });
-    }
-});
+  });
+}

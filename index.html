@@ -1,62 +1,56 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MorreliFlix - Exploração Cinematográfica</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MorelliFlix - Análise: A Rede Social</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <h1>MorreliFlix</h1>
-            <p>Sua Jornada Estelar pelo Cinema</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#perguntas">Missões</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Fundo animado com estrelas -->
+  <div class="stars"></div>
+  <div class="twinkling"></div>
 
-    <main>
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h2>Decifrando "A Rede Social"</h2>
-                <p>Uma Análise Profunda em Meio às Estrelas</p>
-                <button id="iniciarExploracao">Iniciar Exploração</button>
-            </div>
-        </section>
+  <header class="header">
+    <h1>🌌 MorelliFlix</h1>
+    <p>Explorando o universo do cinema e da tecnologia</p>
+  </header>
 
-        <section id="perguntas" class="qa-section">
-            <h2>Missões de Análise</h2>
-            <div class="question-container">
-                <div class="question-card">
-                    <h3>Missão 1: Tema Principal</h3>
-                    <p id="resposta1"></p>
-                </div>
-                <div class="question-card">
-                    <h3>Missão 2: Impacto na Vida de Zuckerberg</h3>
-                    <p id="resposta2"></p>
-                </div>
-                <div class="question-card">
-                    <h3>Missão 3: Tecnologia e Sociedade</h3>
-                    <p id="resposta3"></p>
-                </div>
-                <div class="question-card">
-                    <h3>Missão 4: Ética e Responsabilidade</h3>
-                    <p id="resposta4"></p>
-                </div>
-            </div>
-        </section>
-    </main>
+  <main class="container">
+    <section class="movie-section">
+      <div class="movie-poster-container">
+        <img src="https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
+             alt="Capa do filme A Rede Social"
+             class="movie-poster" />
+      </div>
+      <div class="movie-details">
+        <h2>A Rede Social (The Social Network, 2010)</h2>
+        <p><strong>Diretor:</strong> David Fincher</p>
+        <p><strong>Roteiro:</strong> Aaron Sorkin</p>
+        <p><strong>Gênero:</strong> Drama, Biografia</p>
+        <p><strong>Duração:</strong> 120 minutos</p>
+      </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2023 MorreliFlix. Todos os direitos reservados.</p>
-    </footer>
+    <section class="synopsis-section">
+      <h3>Sinopse</h3>
+      <p id="synopsis-text"></p>
+    </section>
 
-    <script src="script.js"></script>
+    <section class="questions-section">
+      <h3>Análise do Filme</h3>
+      <div id="accordion"></div>
+    </section>
+  </main>
+
+  <button id="scrollToTop" title="Voltar ao topo">⬆️</button>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> MorelliFlix. Todos os direitos reservados.</p>
+    <p><strong>Direitos Reservados: Rodrigo</strong></p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

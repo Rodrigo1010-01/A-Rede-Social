@@ -1,441 +1,257 @@
-/* Importação de fontes (ex: Google Fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
-
-:root {
-    --cor-fundo-primaria: #01010d; /* Fundo bem escuro, quase preto */
-    --cor-fundo-secundaria: #0d0d1a; /* Azul marinho escuro */
-    --cor-texto-primaria: #e0e0f0;
-    --cor-texto-secundaria: #a0a0c0;
-    --cor-destaque-primaria: #00ffff; /* Ciano brilhante */
-    --cor-destaque-secundaria: #00ccff; /* Azul celeste */
-    --cor-bordas: #2a2a44; /* Borda mais escura */
-    --cor-botoes: #00ccff;
-    --cor-botoes-hover: #00e6e6;
-    --cor-brilho: rgba(0, 255, 255, 0.4); /* Brilho para elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--cor-fundo-primaria);
-    color: var(--cor-texto-primaria);
-    line-height: 1.6;
-    overflow-x: hidden; /* Evita barra de rolagem horizontal */
-    position: relative; /* Para posicionar elementos em relação ao body */
+  font-family: 'Roboto', sans-serif;
+  background-color: #000;
+  color: #e0f7ff;
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Fundo espacial dinâmico com estrelas */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top left, rgba(0,255,255,0.08) 0%, transparent 30%),
-                radial-gradient(circle at bottom right, rgba(255,0,255,0.08) 0%, transparent 30%),
-                url('https://www.transparenttextures.com/patterns/stardust.png'); /* Padrão de estrelas */
-    background-size: cover;
-    opacity: 0.5; /* Mais sutil */
-    z-index: -1;
-    animation: moveStars 120s linear infinite;
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, #1b2735 0%, #000 100%);
+  z-index: -2;
 }
 
-@keyframes moveStars {
-    from { background-position: 0 0; }
-    to { background-position: 100% 100%; }
+.twinkling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://media.giphy.com/media/11JTxG4Huw5KCG/giphy.gif');
+  background-repeat: repeat;
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* Efeito de nebulosa ou galáxia no fundo */
-.background-nebula {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Milky_Way_Galaxy.jpg/1920px-Milky_Way_Galaxy.jpg') no-repeat center center/cover;
-    opacity: 0.1; /* Transparência para ser um fundo sutil */
-    z-index: -2; /* Abaixo das estrelas */
-    filter: blur(5px); /* Suaviza a imagem */
-    animation: zoomNebula 60s ease-in-out infinite alternate;
+.header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(0, 10, 30, 0.8);
+  border-bottom: 2px solid #00bfff;
+  box-shadow: 0 4px 20px rgba(0, 191, 255, 0.2);
 }
 
-@keyframes zoomNebula {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+.header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.2rem;
+  color: #00d4ff;
+  text-shadow: 0 0 15px #00bfff, 0 0 30px #0080ff;
+  letter-spacing: 2px;
 }
 
-
-header {
-    background-color: var(--cor-fundo-secundaria);
-    color: var(--cor-texto-primaria);
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 15px var(--cor-brilho); /* Brilho mais intenso */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid var(--cor-bordas);
+.header p {
+  font-size: 1.3rem;
+  color: #a0eaff;
+  margin-top: 0.5rem;
 }
 
-.logo {
-    text-align: center;
-    margin-left: 2rem;
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: rgba(0, 15, 30, 0.85);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 191, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid #00bfff30;
+  position: relative;
+  z-index: 1;
 }
 
-.logo h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem; /* Um pouco maior */
-    color: var(--cor-destaque-primaria);
-    margin: 0;
-    text-shadow: 0 0 10px var(--cor-destaque-primaria), 0 0 20px rgba(0, 255, 255, 0.4); /* Brilho duplo */
-    letter-spacing: 2px;
+.movie-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
-.logo p {
-    font-size: 0.9rem; /* Um pouco maior */
-    color: var(--cor-texto-secundaria);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.movie-poster-container {
+  flex: 0 0 250px;
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    margin-right: 2rem;
+.movie-poster {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  border: 2px solid #00bfff;
+  transition: transform 0.3s ease;
 }
 
-nav ul li {
-    margin-left: 2.5rem; /* Mais espaço */
+.movie-poster:hover {
+  transform: scale(1.05);
 }
 
-nav ul li a {
-    color: var(--cor-texto-primaria);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.15rem; /* Um pouco maior */
-    position: relative;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    padding: 5px 0;
+.movie-details {
+  flex: 1;
+  min-width: 300px;
+  color: #b0e5ff;
 }
 
-nav ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px; /* Linha mais grossa */
-    background: var(--cor-destaque-primaria);
-    left: 50%; /* Centraliza a linha */
-    transform: translateX(-50%);
-    bottom: -8px; /* Mais abaixo */
-    transition: width 0.3s ease-in-out;
-    border-radius: 2px;
+.movie-details h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  color: #00dfff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px #00dfff;
 }
 
-nav ul li a:hover {
-    color: var(--cor-destaque-primaria);
-    text-shadow: 0 0 8px var(--cor-destaque-primaria), 0 0 15px rgba(0, 255, 255, 0.3);
+.movie-details p {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
 }
 
-nav ul li a:hover::after {
-    width: 100%;
+.synopsis-section {
+  margin-bottom: 3rem;
+  padding: 1.8rem;
+  background: rgba(0, 25, 50, 0.6);
+  border-radius: 14px;
+  border-left: 4px solid #00bfff;
 }
 
-.hero {
-    background: linear-gradient(rgba(1,1,13,0.8), rgba(13,13,26,0.8)), url('https://images.unsplash.com/photo-1502134273390-f00e57dfd8f4?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; /* Imagem de galáxia realista */
-    height: 70vh; /* Mais alto */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--cor-texto-primaria);
-    border-bottom: 2px solid var(--cor-bordas);
-    position: relative;
-    overflow: hidden; /* Garante que elementos filhos não vazem */
+.synopsis-section h3 {
+  font-size: 1.8rem;
+  color: #00d4ff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 5px #00d4ff;
 }
 
-/* Adicionando elementos visuais de planetas e satélites com animação */
-.hero::before, .hero::after {
-    content: '';
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.6;
-    filter: drop-shadow(0 0 5px var(--cor-destaque-secundaria)); /* Sombra para dar profundidade */
+.synopsis-section p {
+  color: #d0f0ff;
+  font-style: italic;
+  line-height: 1.8;
+  white-space: pre-line;
 }
 
-.hero::before { /* Planeta maior */
-    width: 180px;
-    height: 180px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Jupiter_as_seen_by_the_Hubble_Space_Telescope_%28retouched%29.png/1200px-Jupiter_as_seen_by_the_Hubble_Space_Telescope_%28retouched%29.png'); /* Exemplo: Júpiter */
-    top: 15%;
-    left: -50px; /* Começa fora da tela */
-    animation: movePlanetLeft 30s linear infinite;
-    z-index: 1; /* Acima do fundo, abaixo do conteúdo principal */
+.questions-section h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: #00bfff;
+  margin-bottom: 1.8rem;
+  text-shadow: 0 0 8px #00bfff;
 }
 
-.hero::after { /* Satélite/lua menor */
-    width: 100px;
-    height: 100px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Moon_symbol_%28gold%29.svg/1200px-Moon_symbol_%28gold%29.svg.png'); /* Exemplo: Lua */
-    bottom: 10%;
-    right: -30px; /* Começa fora da tela */
-    animation: moveMoonRight 40s linear infinite reverse; /* Inverte a direção */
-    z-index: 1;
+.accordion-item {
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #00bfff30;
 }
 
-@keyframes movePlanetLeft {
-    0% { transform: translateX(-100%) rotate(0deg); }
-    100% { transform: translateX(calc(100vw + 50px)) rotate(360deg); } /* Move de esquerda para direita */
+.accordion-question {
+  background: rgba(0, 40, 80, 0.7);
+  color: #00dfff;
+  padding: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border: none;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  transition: background 0.3s ease;
 }
 
-@keyframes moveMoonRight {
-    0% { transform: translateX(100%) rotate(0deg); }
-    100% { transform: translateX(calc(-100vw - 30px)) rotate(-360deg); } /* Move de direita para esquerda */
+.accordion-question:hover {
+  background: rgba(0, 60, 120, 0.8);
 }
 
-
-.hero-content {
-    max-width: 900px; /* Mais largo */
-    padding: 3rem; /* Mais padding */
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo mais escuro */
-    border-radius: 15px; /* Bordas mais suaves */
-    border: 1px solid var(--cor-bordas);
-    box-shadow: 0 0 30px var(--cor-brilho); /* Brilho mais forte */
-    z-index: 2; /* Acima dos planetas */
+.accordion-question::after {
+  content: '+';
+  position: absolute;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #00bfff;
 }
 
-.hero h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3.5rem; /* Maior */
-    margin-bottom: 1.5rem;
-    color: var(--cor-destaque-primaria);
-    text-shadow: 0 0 12px var(--cor-destaque-primaria), 0 0 25px rgba(0, 255, 255, 0.5);
-    letter-spacing: 3px;
+.accordion-question.active::after {
+  content: '−';
 }
 
-.hero p {
-    font-size: 1.4rem; /* Maior */
-    margin-bottom: 2.5rem;
-    color: var(--cor-texto-secundaria);
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+.accordion-answer {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  background: rgba(0, 20, 40, 0.5);
+  color: #d0f0ff;
+  line-height: 1.7;
 }
 
-#iniciarExploracao {
-    background-color: var(--cor-botoes);
-    color: var(--cor-fundo-primaria);
-    padding: 1rem 2.5rem; /* Maior */
-    border: none;
-    border-radius: 8px; /* Bordas mais suaves */
-    font-size: 1.2rem; /* Maior */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 10px var(--cor-botoes); /* Brilho inicial do botão */
+.accordion-answer.open {
+  max-height: 500px;
+  padding: 1rem;
 }
 
-#iniciarExploracao:hover {
-    background-color: var(--cor-botoes-hover);
-    transform: translateY(-5px) scale(1.02); /* Mais efeito */
-    box-shadow: 0 8px 20px var(--cor-brilho); /* Brilho maior no hover */
+#scrollToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 191, 255, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  display: none;
 }
 
-.qa-section {
-    padding: 5rem 2rem; /* Mais padding */
-    max-width: 1400px; /* Mais largo */
-    margin: 0 auto;
-    text-align: center;
+#scrollToTop:hover {
+  background: #00bfff;
+  transform: scale(1.1);
 }
 
-.qa-section h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3rem; /* Maior */
-    color: var(--cor-destaque-primaria);
-    margin-bottom: 4rem; /* Mais espaço */
-    text-shadow: 0 0 10px var(--cor-destaque-primaria), 0 0 20px rgba(0, 255, 255, 0.4);
-    letter-spacing: 2px;
-    position: relative;
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 10, 30, 0.9);
+  color: #80d0ff;
+  font-size: 0.95rem;
+  border-top: 1px solid #00bfff30;
+  margin-top: 2rem;
 }
 
-.qa-section h2::before, .qa-section h2::after {
-    content: '';
-    position: absolute;
-    width: 60px;
-    height: 2px;
-    background: var(--cor-destaque-secundaria);
-    top: 50%;
-    transform: translateY(-50%);
-    filter: drop-shadow(0 0 5px var(--cor-destaque-secundaria));
-}
-
-.qa-section h2::before {
-    left: 20%;
-}
-
-.qa-section h2::after {
-    right: 20%;
-}
-
-
-.question-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adaptável e um pouco maior */
-    gap: 2.5rem; /* Mais espaço entre os cards */
-}
-
-.question-card {
-    background-color: var(--cor-fundo-secundaria);
-    padding: 2.5rem; /* Mais padding */
-    border-radius: 12px; /* Bordas mais suaves */
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); /* Brilho mais sutil */
-    border: 1px solid var(--cor-bordas);
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.question-card::before { /* Efeito de borda brilhante animada */
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(transparent, rgba(0, 255, 255, 0.5), transparent);
-    animation: rotateBorder 4s linear infinite;
-    z-index: 0;
-    opacity: 0.3;
-}
-
-@keyframes rotateBorder {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.question-card:hover {
-    transform: translateY(-8px); /* Mais efeito */
-    box-shadow: 0 12px 30px var(--cor-brilho);
-    border-color: var(--cor-destaque-primaria);
-}
-
-.question-card h3 {
-    font-family: 'Orbitron', sans-serif;
-    color: var(--cor-destaque-secundaria);
-    font-size: 1.6rem; /* Maior */
-    margin-top: 0;
-    margin-bottom: 1.2rem;
-    border-bottom: 2px solid var(--cor-bordas);
-    padding-bottom: 0.8rem;
-    position: relative;
-    z-index: 1; /* Acima do efeito de borda */
-}
-
-.question-card p {
-    color: var(--cor-texto-secundaria);
-    font-size: 1.05rem; /* Um pouco maior */
-    position: relative;
-    z-index: 1;
-}
-
-footer {
-    background-color: var(--cor-fundo-secundaria);
-    color: var(--cor-texto-secundaria);
-    text-align: center;
-    padding: 2rem 0; /* Mais padding */
-    margin-top: 4rem; /* Mais espaço */
-    border-top: 1px solid var(--cor-bordas);
-    box-shadow: 0 -2px 15px var(--cor-brilho);
-    font-size: 0.95rem;
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
-    .hero h2 {
-        font-size: 3rem;
-    }
-    .hero p {
-        font-size: 1.2rem;
-    }
-    .qa-section h2 {
-        font-size: 2.5rem;
-    }
-    .question-card h3 {
-        font-size: 1.4rem;
-    }
+.footer strong {
+  color: #00dfff;
 }
 
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-    .logo {
-        margin: 1rem 0;
-    }
-    nav ul {
-        margin-top: 1rem;
-        margin-right: 0;
-        justify-content: center;
-    }
-    nav ul li {
-        margin: 0 1rem;
-    }
-    .hero h2 {
-        font-size: 2.2rem;
-    }
-    .hero p {
-        font-size: 1.1rem;
-    }
-    .qa-section h2 {
-        font-size: 2rem;
-    }
-    .question-container {
-        grid-template-columns: 1fr;
-    }
-    .hero::before, .hero::after { /* Reduz o tamanho dos planetas em telas menores */
-        width: 100px;
-        height: 100px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo h1 {
-        font-size: 2rem;
-    }
-    .logo p {
-        font-size: 0.75rem;
-    }
-    nav ul li a {
-        font-size: 0.9rem;
-    }
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-    #iniciarExploracao {
-        padding: 0.7rem 1.8rem;
-        font-size: 1rem;
-    }
-    .qa-section h2 {
-        font-size: 1.8rem;
-    }
-    .question-card h3 {
-        font-size: 1.3rem;
-    }
-    .qa-section h2::before, .qa-section h2::after {
-        width: 30px;
-        left: 10%;
-        right: 10%;
-    }
+  .header h1 {
+    font-size: 2.4rem;
+  }
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  .movie-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .movie-details, .movie-poster-container {
+    flex: none;
+  }
+  .synopsis-section, .questions-section {
+    padding: 1.2rem;
+  }
 }
