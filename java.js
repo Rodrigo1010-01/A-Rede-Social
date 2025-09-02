@@ -1,8 +1,49 @@
+// Ano atual
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Fundo Matrix
+const canvas = document.createElement('canvas');
+canvas.classList.add('matrix-canvas');
+document.getElementById('matrix-bg').appendChild(canvas);
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&!?*+-=~|';
+const fontSize = 16;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(0);
+
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = '#0f0';
+  ctx.font = `${fontSize}px 'Share Tech Mono'`;
+
+  for (let i = 0; i < drops.length; i++) {
+    const char = chars.charAt(Math.floor(Math.random() * chars.length));
+    ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.97) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix, 50);
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Digitação da sinopse
 const synopsisText = `Mark Zuckerberg, um estudante de Harvard em 2003, cria um site chamado "Facemash", que rapidamente se torna viral na universidade. Inspirado por isso, ele começa a desenvolver uma rede social para conectar estudantes: o "The Facebook". Com a ajuda do amigo Eduardo Saverin, o projeto cresce exponencialmente. No entanto, à medida que o Facebook se expande para outras universidades e depois para o mundo, Mark enfrenta acusações de traição de amigos, roubo de ideias por parte dos gêmeos Cameron e Tyler Winklevoss, e a perda de sua própria humanidade no caminho do sucesso. O filme é narrado através de depoimentos em tribunal, mostrando a ascensão meteórica do Facebook e o preço pessoal pago por seu criador.`;
 
-function typeWriter(element, text, speed = 30) {
+function typeWriter(element, text, speed = 35) {
   let i = 0;
   element.innerHTML = '';
   const timer = setInterval(() => {
@@ -15,6 +56,7 @@ function typeWriter(element, text, speed = 30) {
   }, speed);
 }
 
+// Carregar tudo
 window.onload = function () {
   const synopsisEl = document.getElementById('synopsis-text');
   typeWriter(synopsisEl, synopsisText);
@@ -34,6 +76,7 @@ window.onload = function () {
   };
 };
 
+// Perguntas e respostas
 const questions = [
   {
     q: "1. Qual é o tema principal do filme \"A Rede Social\"?",
@@ -53,6 +96,7 @@ const questions = [
   }
 ];
 
+// Criar acordeão
 function createAccordion() {
   const accordionContainer = document.getElementById('accordion');
   questions.forEach(item => {

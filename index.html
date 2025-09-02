@@ -3,54 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MorelliFlix - Análise: A Rede Social</title>
+  <title>🔐 MorelliFlix — Análise Hacker: A Rede Social</title>
+  <meta name="description" content="Análise profunda do filme A Rede Social com visão hacker, ética digital e impacto tecnológico.">
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Fundo animado com estrelas -->
-  <div class="stars"></div>
-  <div class="twinkling"></div>
+  <!-- Fundo Matrix animado -->
+  <div id="matrix-bg"></div>
 
+  <!-- Header do sistema -->
   <header class="header">
-    <h1>🌌 MorelliFlix</h1>
-    <p>Explorando o universo do cinema e da tecnologia</p>
+    <h1><span class="glow-green">🔐</span> MorelliFlix</h1>
+    <p class="tagline">System: Deep Film Analysis v3.1 // <span class="status-text">SECURE ACCESS</span></p>
   </header>
 
   <main class="container">
-    <section class="movie-section">
-      <div class="movie-poster-container">
+    <!-- Cabeçalho do filme -->
+    <section class="movie-header">
+      <div class="poster-container glitch-effect">
         <img src="https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
              alt="Capa do filme A Rede Social"
              class="movie-poster" />
       </div>
-      <div class="movie-details">
-        <h2>A Rede Social (The Social Network, 2010)</h2>
-        <p><strong>Diretor:</strong> David Fincher</p>
-        <p><strong>Roteiro:</strong> Aaron Sorkin</p>
-        <p><strong>Gênero:</strong> Drama, Biografia</p>
-        <p><strong>Duração:</strong> 120 minutos</p>
+      <div class="movie-meta">
+        <h2 class="title"><span class="glow-cyan">🎬</span> A Rede Social (2010)</h2>
+        <ul class="info-list">
+          <li><strong>Diretor:</strong> <span class="highlight">David Fincher</span></li>
+          <li><strong>Roteiro:</strong> <span class="highlight">Aaron Sorkin</span></li>
+          <li><strong>Gênero:</strong> <span class="highlight">Drama | Tecnologia | Biografia</span></li>
+          <li><strong>Duração:</strong> <span class="highlight">120 min</span></li>
+          <li class="status-line">Status: <span class="status-badge online">ONLINE</span></li>
+        </ul>
       </div>
     </section>
 
+    <!-- Sinopse -->
     <section class="synopsis-section">
-      <h3>Sinopse</h3>
-      <p id="synopsis-text"></p>
+      <h3 class="section-title"><span class="glow-green">📌</span> SINOPSE DO FILME</h3>
+      <p id="synopsis-text" class="terminal-text"></p>
     </section>
 
-    <section class="questions-section">
-      <h3>Análise do Filme</h3>
-      <div id="accordion"></div>
+    <!-- Análise -->
+    <section class="analysis-section">
+      <h3 class="section-title"><span class="glow-cyan">🔍</span> ANÁLISE HACKER</h3>
+      <div id="accordion" class="analysis-accordion"></div>
     </section>
   </main>
 
-  <button id="scrollToTop" title="Voltar ao topo">⬆️</button>
+  <!-- Botão de rolagem -->
+  <button id="scrollToTop" aria-label="Voltar ao topo">⮝</button>
 
+  <!-- Rodapé -->
   <footer class="footer">
-    <p>&copy; <span id="year"></span> MorelliFlix. Todos os direitos reservados.</p>
-    <p><strong>Direitos Reservados: Rodrigo</strong></p>
+    <p>© <span id="year"></span> <span class="glow-green">MorelliFlix</span> — Deep Dive in Cinema & Technology</p>
+    <p><strong class="glow-red">Direitos Reservados: Rodrigo</strong></p>
+    <p class="ip-info">IP: 192.168.0.101 | Host: Earth | Security: <span class="glow-green">Active</span></p>
   </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
